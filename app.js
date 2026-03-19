@@ -9,6 +9,8 @@ import indexRouter from './routes/index.js'
 import usersRouter from './routes/users.js'
 import weaponRouter from './routes/dead_space.js'
 import carsRouter from './routes/cars.js'
+import slonikiRouter from './routes/sloniki.js'
+
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -27,9 +29,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/students', usersRouter);
 app.use('/weapons', weaponRouter);
-app.use('/weapoms', weaponRouter);
+app.use('/sloniki', slonikiRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
