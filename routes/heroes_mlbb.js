@@ -33,7 +33,7 @@ router.post("/add", async (req, res) => {
       hero_role || "Unknown",
       attack_type || "Unknown"
     ]);
-    res.redirect("/heroes"); 
+    res.redirect("/heroes_mlbb"); 
   } catch (err) {
     console.error("DATABASE ERROR:", err.message);
     res.status(500).send("Database Error: " + err.message);
@@ -44,7 +44,7 @@ router.get("/delete/:id", async (req, res) => {
   try {
     const { id } = req.params;
     await db.query("DELETE FROM heroes WHERE id = $1", [id]);
-    res.redirect("/heroes");
+    res.redirect("/heroes_mlbb");
   } catch (err) {
     res.status(500).send("Could not delete hero"); 
   }
@@ -75,7 +75,7 @@ router.post("/update/:id", async (req, res) => {
     `;
 
     await db.query(query, [hero_name, hero_class, hero_role, attack_type, id]);
-    res.redirect("/heroes");
+    res.redirect("/heroes_mlbb");
   } catch (err) {
     res.status(500).send("Error updating hero data");
   }
