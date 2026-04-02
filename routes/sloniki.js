@@ -20,12 +20,8 @@ router.get('/create', async function(req, res, next) {
 })
 
 router.post('/create', async function(req, res, next) {
-const { username, password, age, place_of_birth } = req.body;
-
+   const { username, password, age, place_of_birth } = req.body;
   try {
-
-    const { username, password, age, place_of_birth } = req.body;
-
     checkUsername(username);
     checkAge(age);
     checkPassword(password);
@@ -35,7 +31,9 @@ const { username, password, age, place_of_birth } = req.body;
     
     res.redirect('/sloniki');
   } catch (err) {
-    const errorMessage = err.message
+    console.log(err)
+    const errorMessage = err.message;
+    console.log("Error message: ", errorMessage);
     // res.status(500).send(`!! Error registering slonik: this slonik: @${username} is already exist`);
     res.render('forms/sloniki/sloniki_form', {
       errorUsername: errorMessage.includes("username") ? errorMessage : null,
